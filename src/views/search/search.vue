@@ -1,7 +1,6 @@
 <template>
   <div>
-
-      abc页面
+      搜索页面
   </div>
 </template>
 

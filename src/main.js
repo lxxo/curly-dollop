@@ -4,15 +4,11 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+import Vant from 'vant';
+import 'vant/lib/index.css';
 
+Vue.use(Vant);
 Vue.config.productionTip = false;
-
-//使用mint-ui  引入全部组件
-import Mint from 'mint-ui';
-Vue.use(Mint);
-
-import 'mint-ui/lib/style.css'
-
 
 console.log(Vue);
 

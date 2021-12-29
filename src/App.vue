@@ -1,47 +1,49 @@
-
 <template>
   <div id="app">
     <!--顶部栏-->
-    <mt-header title="标题">
-      <router-link to="/" slot="left">
-       <mt-button icon="back">返回</mt-button>
-      </router-link>
-      <mt-button icon="more" slot="right"></mt-button>
-    </mt-header>
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
+   <van-nav-bar title="标题" left-text="返回" left-arrow  @click-left="onClickLeft" 
+   @click-right="onClickRight">
+   <template #right>
+    <van-icon name="search" size="18" />
+  </template>
+   </van-nav-bar>
 
-      <!--路由组件出口-->
+    <!--路由组件出口-->
     <router-view />
-
-<!--顶部栏-->
-<!-- @click="$parent.$emit('input', id)" $parent是调用父组件的方法 让父组件拥有 input方法传过来一个id id就是你选中的那个数据  -->
-<mt-tabbar v-model="selected" @input="(e)=>{e==='vip'?$router.push('/about'):$router.push('/abc')}">
-  <mt-tab-item id="frist" >
-    <img slot="icon" src="..\src\assets\frist.png">
-    首页
-  </mt-tab-item>
-  <mt-tab-item id="vip" >
-    <img slot="icon" src="..\src\assets\账号.png">
-    会员
-  </mt-tab-item>
-  <mt-tab-item id="shopcart" >
-    <img slot="icon" src="..\src\assets\数据.png">
-    购物车
-  </mt-tab-item>
-  <mt-tab-item id="search" >
-    <img slot="icon" src="..\src\assets\系统设置.png">
-    查找
-  </mt-tab-item>
-</mt-tabbar>
-
+<van-tabbar v-model="active">
+  <van-tabbar-item to='/first' icon="home-o">首页</van-tabbar-item>
+  <van-tabbar-item to='/search' icon="search" dot>搜索</van-tabbar-item>
+  <van-tabbar-item to='/about' icon="friends-o" badge="5">关于我们</van-tabbar-item>
+  <van-tabbar-item to='/user' icon="setting-o" badge="20">个人中心</van-tabbar-item>
+</van-tabbar>
   </div>
 </template>
 
-
-
+<script>
+import { Toast } from 'vant';
+export default {
+  data() {
+    return {
+      active: 0,
+    };
+  },
+  methods: {
+    send(e) {
+      console.log(e);
+    },
+    func(e) {
+      console.log(e);
+      // e === 'vip' ? $router.push('/about') : $router.push('/abc');
+    },
+    onClickLeft() {
+      Toast('返回');
+    },
+    onClickRight() {
+      Toast('搜索');
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -66,18 +68,8 @@
 }
 </style>
 <style>
-*{
+* {
   padding: 0;
   margin: 0;
 }
 </style>
-<script>
-export default {
-  name:'App',
-  data(){
-    return{
-      selected:''
-    }
-  },
-}
-</script>
