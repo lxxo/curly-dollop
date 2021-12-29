@@ -1,5 +1,6 @@
 import Vue from "vue";
 import App from "./App.vue";
+
 import router from "./router";
 import store from "./store";
 
@@ -13,6 +14,7 @@ Vue.use(Mint);
 import 'mint-ui/lib/style.css'
 
 
+console.log(Vue);
 
 new Vue({
   router,

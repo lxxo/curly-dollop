@@ -17,20 +17,21 @@
     <router-view />
 
 <!--顶部栏-->
-<mt-tabbar v-model="selected">
-  <mt-tab-item id="frist">
+<!-- @click="$parent.$emit('input', id)" $parent是调用父组件的方法 让父组件拥有 input方法传过来一个id id就是你选中的那个数据  -->
+<mt-tabbar v-model="selected" @input="(e)=>{e==='vip'?$router.push('/about'):$router.push('/abc')}">
+  <mt-tab-item id="frist" >
     <img slot="icon" src="..\src\assets\frist.png">
     首页
   </mt-tab-item>
-  <mt-tab-item id="vip">
+  <mt-tab-item id="vip" >
     <img slot="icon" src="..\src\assets\账号.png">
     会员
   </mt-tab-item>
-  <mt-tab-item id="shopcart">
+  <mt-tab-item id="shopcart" >
     <img slot="icon" src="..\src\assets\数据.png">
     购物车
   </mt-tab-item>
-  <mt-tab-item id="search">
+  <mt-tab-item id="search" >
     <img slot="icon" src="..\src\assets\系统设置.png">
     查找
   </mt-tab-item>
@@ -38,6 +39,9 @@
 
   </div>
 </template>
+
+
+
 
 <style lang="scss">
 #app {
@@ -75,11 +79,5 @@ export default {
       selected:''
     }
   },
-  // watch:{
-  //   selected:function(newV,oldV){
-  //     console.log(newV);
-  //     this.$router.push({name:this.selected});
-  //   }
-  // },
 }
 </script>

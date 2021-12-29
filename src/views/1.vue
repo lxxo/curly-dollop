@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HelloWorld msg="我是首页" />
+    <HelloWorld msg="" />
   </div>
 </template>
 
